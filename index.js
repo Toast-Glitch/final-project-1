@@ -12,25 +12,89 @@
  * Follow good coding practices. Keep your code DRY (Do not repeat yourself) by utilizing functions to abstract repetitive code.
 **/
 
+// Node Getters
+const mainDiv = () => document.getElementById('main');
+const recipesContainer = () => document.getElementById('recipeCardContainer');
+// const homePageLink = () => document.getElementById('home-page-link');
 
-const searchInput = `pizza`;
 
-// const button = document.querySelector(".button");
-// const recipeText = document.querySelector(".recipe");
+// Templates
+// const homePageTemplate = () => {
+//   return 'mainDiv()'
+// };
 
-function fetchMeals() {
-  //API Key
-  const apikey = ('');
-  //API URL   // API Parameters
-  const mealsURL = (`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apikey}&query=${searchInput}`,
-    { addRecipeInformation: "true" });
-  //   addRecipeNutrition: "true",
-  //   instructionsRequired: "true"
-  // });
+
+//Renderers
+// const renderMealResults = () => {
+// }
+// const renderHomePage = () => {
+//   mainDiv().innerHTML = homePageTemplate;
+// }
+
+
+// When the DOM Loads
+// document.addEventListener('DOMContentLoaded', () => {
+//   renderHomePage();
+//   homePageLinkEvent();
+// })
+
+
+// Events
+const renderRecipeCards = (recipeArr = []) => {
+  recipeArr.forEach((recipeCard) => {
+    const { label: recipeName,
+      ingredientLines: ingredients,
+      image: recipeImg
+    } = recipeCard.recipe;
+    const renderIngredientsList = (ingredientLines = []) => {
+      let str = '';
+      for (var ingredient of ingredientLines) {
+        string = str + `<li>${ingredient}</li>`;
+        return string;
+      }
+      const htmlStr = (`
+      <div class="row">
+      <div class="col s12 m7">
+      <div class="recipe-card">
+      <div class="card-image">
+        <img src="${recipeImg}">
+      <span class="card-title">${recipeName}</span>
+      </div>
+      <div class="card-content">
+        <p>
+        ${renderIngredientsList}
+        </p>
+      </div>
+      <div id=meal-card-link class="card-action">
+        <a href="#"> link</a>
+      </div>
+    </div>
+  </div>
+</div>`
+      )
+    }
+  });
+};
+
+// const homePageLinkEvent = () => {
+//   homePageLink().addEventListener('click', (e) => {
+//      renderHomePage();
+//   })
+// };
+
+
+// API Info + Set up
+const searchInput = 'pizza';
+
+function fetchRecipes() {
+  //API Key + ID
+  const apikey = ();
+  const apiId = ();
+  //API URL + Parameters
+  const recipesURL = (`https://api.edamam.com/api/recipes/v2?type=public&q=${searchInput}&app_id=${apiId}&app_key=${apikey}`);
+
   // Fetch API Data
-  fetch(mealsURL)
+  fetch(recipesURL)
     .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    });
+    .then((data) => { console.log(renderRecipeCards(data.hits)) })
 };
