@@ -12,6 +12,7 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <title>The Olive Apron</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -28,20 +29,16 @@
     </div>
   </nav>
   <!-- Input and Button Section-->
-  <div class="container" id="main">
-    <div>
-      <input type="text" class="meal-search" placeholder="Find a Recipe...">
-      <button class="button">SEARCH</button>
-    </div>
-    <!-- Results for recipes-->
-    <div id="meal-results">
-      <p>Results</p>
-    </div>
+  <div class="search-container">
+    <form>
+      <input type="text" id="recipe-search" placeholder="Find a Recipe...">
+      <button type="submit" id="search" class="button">Search</button>
+    </form>
   </div>
+  <!-- Results for recipes-->
+  <div id="main">
 
-  <main>
-
-  </main>
+  </div>
   <!-- Footer-->
   <footer>
 
