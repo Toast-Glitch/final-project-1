@@ -53,11 +53,6 @@ function renderRandomRecipePage() {
   mainDiv().appendChild(p);
 }
 
-//Globals
-function clearPage() {
-  mainDiv().innerHTML = ""
-}
-
 //Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
   renderHomePage();
