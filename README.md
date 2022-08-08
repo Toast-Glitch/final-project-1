@@ -18,6 +18,7 @@ Utilizing an API containing recipe data to produce a single page application wit
 - Random recipe (DOMContentLoaded) 
 - Searching recipe data (Submit)
 - Favoriting recipes (Click)
+- Ingredients Shopping List (Click)
 
 # Strech
-- Ingredients Shopping List (Click)
+- Random recipe (DOMContentLoaded)

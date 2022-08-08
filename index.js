@@ -83,11 +83,6 @@ function renderSearchRecipesPage() {
   mainDiv().appendChild(h1);
   mainDiv().insertAdjacentHTML("beforeend", searchbarHTML);
 
-  const searchQueryElement = () => document.getElementById('search-query');
-  const searchQuery = searchQueryElement.value;
-
-
-
 
 }
 
@@ -115,4 +110,3 @@ function randomRecipeEvent() {
 function searchRecipesEvent() {
   searchRecipesPage().addEventListener("click", renderSearchRecipesPage);
 }
-
