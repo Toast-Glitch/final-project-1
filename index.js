@@ -15,14 +15,13 @@ function clearPage() {
   mainDiv().innerHTML = ""
 }
 
-// let recipeData = [];
-
 // Nodes
 const mainDiv = () => document.getElementById('main');
 const favoritesPage = () => document.getElementById('favorites-list-link');
 const homePageLink = () => document.getElementById('homepage-link');
 const randomRecipePage = () => document.getElementById('random-recipe-link');
 const searchRecipesPage = () => document.getElementById('search-recipes-link');
+
 
 // Renderers
 function renderHomePage() {
@@ -71,42 +70,52 @@ function renderSearchRecipesPage() {
   clearPage();
 
   const h1 = document.createElement("h1");
+  const div = document.createElement("div");
+  const form = document.createElement("form");
+  const input = document.createElement("input");
+  const btn = document.createElement("button");
+
   h1.innerText = "Search Our Database!"
 
-  const searchbarHTML = `
-  <form id="search-form"> 
-  <input type="text" id="search-query" placeholder="Search Recipes...">
-  <button>Search</button>
-  </form>
-  `
 
   mainDiv().appendChild(h1);
-  mainDiv().insertAdjacentHTML("beforeend", searchbarHTML);
-
 
 }
 
-// Events
+// DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
   renderHomePage();
   favoritesListEvent();
   homePageEvent();
   randomRecipeEvent();
-  searchRecipesEvent();
+  searchRecipesPageEvent();
+  searchInputEvent();
 })
 
+// Events
 function favoritesListEvent() {
-  favoritesPage().addEventListener("click", renderFavoritesPage);
-}
+  favoritesPage().addEventListener("click", renderFavoritesPage)
+};
 
 function homePageEvent() {
-  homePageLink().addEventListener("click", renderHomePage);
-}
+  homePageLink().addEventListener("click", renderHomePage)
+};
 
 function randomRecipeEvent() {
-  randomRecipePage().addEventListener("click", renderRandomRecipePage);
-}
+  randomRecipePage().addEventListener("click", renderRandomRecipePage)
+};
 
-function searchRecipesEvent() {
-  searchRecipesPage().addEventListener("click", renderSearchRecipesPage);
-}
+function searchRecipesPageEvent() {
+  searchRecipesPage().addEventListener("click", renderSearchRecipesPage)
+};
+
+// function searchInputEvent() {
+//   searchForm().addEventListener("submit", logSubmit)
+// };
+
+// function logSubmit (event) {
+//   let searchQuery = "";
+//   searchQuery = event.target.getElementById('search-query').value;
+//   fetchRecipes(searchQuery);
+//   event.preventDefault();
+// }
