@@ -21,11 +21,29 @@ const favoritesPage = () => document.getElementById('favorites-list-link');
 const homePageLink = () => document.getElementById('homepage-link');
 const randomRecipePage = () => document.getElementById('random-recipe-link');
 const searchRecipesPage = () => document.getElementById('search-recipes-link');
+const searchInput = document.getElementById("search-input");
 
+
+function fetchRecipes(e) {
+  // API Key + ID
+  const apikey = ('');
+  const apiId = ('');
+  let searchValue = e.target.value;
+  const apiUrl = (`https://api.edamam.com/api/recipes/v2?type=public&app_id=${apiId}&app_key=${apikey}` + `&q=${searchValue}`)
+  // Fetch Request
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.hits)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
 
 // Renderers
 function renderHomePage() {
-  // Create HTML for Homepage
+  // Create HTML for Homepages
   clearPage();
 
   const h1 = document.createElement("h1");
@@ -70,13 +88,8 @@ function renderSearchRecipesPage() {
   clearPage();
 
   const h1 = document.createElement("h1");
-  const div = document.createElement("div");
-  const form = document.createElement("form");
-  const input = document.createElement("input");
-  const btn = document.createElement("button");
 
   h1.innerText = "Search Our Database!"
-
 
   mainDiv().appendChild(h1);
 
@@ -88,8 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
   favoritesListEvent();
   homePageEvent();
   randomRecipeEvent();
-  searchRecipesPageEvent();
-  searchInputEvent();
 })
 
 // Events
@@ -105,17 +116,12 @@ function randomRecipeEvent() {
   randomRecipePage().addEventListener("click", renderRandomRecipePage)
 };
 
-function searchRecipesPageEvent() {
-  searchRecipesPage().addEventListener("click", renderSearchRecipesPage)
-};
+searchInput.addEventListener('change', fetchRecipes);
 
-// function searchInputEvent() {
-//   searchForm().addEventListener("submit", logSubmit)
-// };
 
-// function logSubmit (event) {
-//   let searchQuery = "";
-//   searchQuery = event.target.getElementById('search-query').value;
-//   fetchRecipes(searchQuery);
-//   event.preventDefault();
-// }
+
+
+
+
+
+
